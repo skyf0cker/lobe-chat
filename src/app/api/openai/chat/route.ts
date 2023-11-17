@@ -12,6 +12,7 @@ import { createErrorResponse } from '../errorResponse';
 import { createChatCompletion } from './createChatCompletion';
 
 export const runtime = 'edge';
+export const preferredRegion = 'iad1';
 
 export const POST = async (req: Request) => {
   const payload = (await req.json()) as OpenAIChatStreamPayload;
