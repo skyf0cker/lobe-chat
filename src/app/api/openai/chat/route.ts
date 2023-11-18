@@ -27,8 +27,13 @@ const getPreferredRegion = () => {
   }
 };
 
-export const runtime = 'edge';
-export const preferredRegion = getPreferredRegion();
+export const config = {
+  regions: getPreferredRegion(),
+  runtime: 'edge',
+};
+
+// export const runtime = 'edge';
+// export const preferredRegion = getPreferredRegion();
 
 export const POST = async (req: Request) => {
   const payload = (await req.json()) as OpenAIChatStreamPayload;
