@@ -11,8 +11,22 @@ import { createOpenai } from '../createOpenai';
 import { createErrorResponse } from '../errorResponse';
 import { createChatCompletion } from './createChatCompletion';
 
+const getPreferredRegion = () => {
+  try {
+    const cfg = getServerConfig();
+    if (cfg.OPENAI_FUNCTION_REGIONS.length <= 0) {
+      return 'auto';
+    }
+
+    return cfg.OPENAI_FUNCTION_REGIONS;
+  } catch (error) {
+    console.error('get server config failed, error:', error);
+    return 'auto';
+  }
+};
+
 export const runtime = 'edge';
-export const preferredRegion = 'iad1';
+export const preferredRegion = getPreferredRegion();
 
 export const POST = async (req: Request) => {
   const payload = (await req.json()) as OpenAIChatStreamPayload;
