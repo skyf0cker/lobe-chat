@@ -18,6 +18,8 @@ const getPreferredRegion = () => {
       return 'auto';
     }
 
+    console.log('OPENAI_FUNCTION_REGIONS:', cfg.OPENAI_FUNCTION_REGIONS);
+
     return cfg.OPENAI_FUNCTION_REGIONS;
   } catch (error) {
     console.error('get server config failed, error:', error);
