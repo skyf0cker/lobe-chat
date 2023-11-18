@@ -14,11 +14,11 @@ import { createChatCompletion } from './createChatCompletion';
 const getPreferredRegion = () => {
   try {
     const cfg = getServerConfig();
+
+    console.log('OPENAI_FUNCTION_REGIONS:', cfg.OPENAI_FUNCTION_REGIONS);
     if (cfg.OPENAI_FUNCTION_REGIONS.length <= 0) {
       return 'auto';
     }
-
-    console.log('OPENAI_FUNCTION_REGIONS:', cfg.OPENAI_FUNCTION_REGIONS);
 
     return cfg.OPENAI_FUNCTION_REGIONS;
   } catch (error) {
